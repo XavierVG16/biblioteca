@@ -8,7 +8,7 @@ import {environment} from '../../environments/environment'
   providedIn: 'root'
 })
 export class AuthService {
-  readonly URL_API = `/autenticar/`;
+  readonly URL_API = `autenticar/`;
   user = {}
   selectedUsuario: Usuario;
   usuario: Usuario[];
