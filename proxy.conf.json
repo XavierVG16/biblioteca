@@ -2,7 +2,7 @@
     "/autenticar/*": 
      {
         "target": "https://sistemabiblioteca-api.herokuapp.com",
-        "secure": true,
+        "secure": false,
         "logLevel":"debug",
         "changeOrigin": true
      }
