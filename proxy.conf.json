@@ -1,5 +1,5 @@
 {
-    "autenticar/*": 
+    "autenticarss/*": 
      {
         "target": "https://sistemabiblioteca-api.herokuapp.com/",
         "secure": false,
