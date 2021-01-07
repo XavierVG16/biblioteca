@@ -1,0 +1,169 @@
+<section class="content-header">
+    <h1>
+        Lectores
+      <small>Módulo De Lectores</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a routerLink="/inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
+      <li class="active">Lectores</li>
+    </ol>
+  </section>
+  <section class="content">
+    <!-- Default box -->
+    <div class="box">
+       <div class="box-header with-border">
+         <h3 class="box-title">Listado de Lectores</h3>
+
+         <div class="box-tools pull-right">
+           <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+             <i class="fa fa-minus"></i></button>
+           
+         </div>
+       </div>
+       <div class="box-body">
+           <div class="pull-right">
+               <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i> Agregar</button>
+           </div>
+           <mat-form-field>
+            <mat-label>Buscar</mat-label>
+            <input matInput type="text" class="form-control" (keyup)="applyFilter($event)" placeholder="..." #input autofocus>
+          </mat-form-field>
+          <div class="col-xs-12 table-responsive">
+
+          <table mat-table [dataSource]="dataSource" class="table table-bordered" matSort>
+          
+            <!-- NOMBRE -->
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> NOMBRES</th>
+          
+                <td mat-cell *matCellDef="let element"> {{element.nombres}} </td>
+            </ng-container>
+              <!-- APELLIDO -->
+              <ng-container matColumnDef="apellido">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> APELLIDOS</th>
+          
+                <td mat-cell *matCellDef="let element"> {{element.apellidos}} </td>
+            </ng-container>
+          <!-- CI -->
+          <ng-container matColumnDef="cedula">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> CEDULA DE IDENTIDAD</th>
+          
+            <td mat-cell *matCellDef="let element"> {{element.ci}} </td>
+          </ng-container>
+            <!-- TELEFONO -->
+          <ng-container matColumnDef="telefono">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> TELEFONO</th>
+          
+            <td mat-cell *matCellDef="let element"> {{element.telefono}} </td>
+          </ng-container>
+                  <!-- direccion -->
+           <ng-container matColumnDef="direccion">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> DIRECCION</th>
+          
+            <td mat-cell *matCellDef="let element"> {{element.direccion}} </td>
+          </ng-container>
+           <!-- TIPO -->
+           <ng-container matColumnDef="tipo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> TIPO LECTOR</th>
+          
+            <td mat-cell *matCellDef="let element"> {{element.tipolector}} </td>
+          </ng-container>
+          
+          <!-- Accion -->
+          <ng-container matColumnDef="accion">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> ACCION</th>
+            <td mat-cell *matCellDef="let element"> 
+              <button class="btn btn-primary btn-sm"data-toggle="modal" data-target="#exampleModal" style="margin: 4px;" (click)= "editLector(element)"><i class="fa fa-pencil"></i> Editar</button>
+      <button class="btn btn-danger btn-sm" style="margin: 4px;" (click)=" deleteLector(element.id_lector)" ><i class="fa  fa-close"></i> Eliminar</button>
+            </td>
+          </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No se encontro  "{{input.value}}"</td>
+            </tr>
+          </table>
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+          </div>
+               
+                    </div>
+       <!-- /.box-body -->
+       <div class="box-footer">
+       
+       </div>
+       <!-- /.box-footer-->
+     </div>
+     <!-- /.box -->
+
+ </section>
+
+ <div class="modal modal-primary" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">{{!lectorService.selectedLector.id_lector ?'Agregar' : 'Editar'}} Lector</h4>
+      </div>
+      <form  #lectorForm="ngForm" (ngSubmit)="addLector(lectorForm)">
+
+      <div class="modal-body">
+        <input type="hidden" name="id_lector" #id_lector
+        [(ngModel)]="lectorService.selectedLector.id_lector">
+
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label >NOMBRES (*)</label>
+            <input type="text" class="form-control" name="nombres" #name="ngModel"  [(ngModel)]="lectorService.selectedLector.nombres" placeholder="Nombres" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label >APELLIDOS (*)</label>
+            <input type="text" class="form-control" name="apellidos" #name="ngModel"  [(ngModel)]="lectorService.selectedLector.apellidos"  placeholder="Apellidos" required>
+          </div>
+        </div>
+       <div class="row">
+          <div class="form-group col-md-6">
+            <label >CEDULA DE IDENTIDAD (*)</label>
+            <input type="text" class="form-control" name="ci" #name="ngModel"  [(ngModel)]="lectorService.selectedLector.ci"  placeholder="Cedula de Identidad" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label >DIRECCION (*)</label>
+            <input type="text" class="form-control"  name="direccion"  #name="ngModel"  [(ngModel)]="lectorService.selectedLector.direccion" placeholder="Direccion"required>
+          </div>
+        </div> 
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label >TELEFONO</label>
+            <input type="text" class="form-control" name="telefono" #name="ngModel"  [(ngModel)]="lectorService.selectedLector.telefono"  placeholder="Telefono">
+          </div>
+        
+          <div class="form-group col-md-6">
+            <label >TIPO LECTOR</label>
+            <select name="tipolector" class="form-control" #name="ngModel"  [(ngModel)]="lectorService.selectedLector.tipolector"  required>
+              <option selected>Tipo Lector</option>
+              
+               
+              <option>Estudiante</option>
+              <option>Profesor</option>
+              <option>Otros</option>
+              
+              
+             
+            </select>
+          </div>
+          
+        </div>        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cerrar</button>
+        <button  class="btn btn-outline">Guardar</button>
+
+      </div>
+      </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

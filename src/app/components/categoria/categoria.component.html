@@ -1,0 +1,111 @@
+<section class="content-header">
+    <h1>
+        Categorias
+      <small>Módulo De Categorías</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a routerLink="/inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
+      <li class="active">Categorías</li>
+    </ol>
+  </section>
+  <section class="content">
+    <!-- Default box -->
+    <div class="box">
+       <div class="box-header with-border">
+         <h3 class="box-title">Listado de Categorías</h3>
+
+         <div class="box-tools pull-right">
+           <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+             <i class="fa fa-minus"></i></button>
+           
+         </div>
+       </div>
+       <div class="box-body">
+           <div class="pull-right">
+               <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> <i class="fa fa-plus"></i> Agregar</button>
+           </div>
+           <mat-form-field>
+            <mat-label>Buscar</mat-label>
+            <input matInput type="text" class="form-control" (keyup)="applyFilter($event)" placeholder="..." #input>
+          </mat-form-field>
+         
+          <div class="col-xs-12 table-responsive">
+
+          <table mat-table [dataSource]="dataSource" class="table table-bordered" matSort>
+           <!-- Categoria -->
+           <ng-container matColumnDef="categoria">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> CATEGORIA</th>
+          
+            <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+          </ng-container>
+       <!-- Accion -->
+       <ng-container matColumnDef="accion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ACCION</th>
+      
+        <td mat-cell *matCellDef="let element">
+          <div class="pull-right">
+            
+          </div>
+          <button class="btn btn-primary btn-sm"data-toggle="modal" data-target="#exampleModal" style="margin: 4px;" (click) = " editCategria(element)" ><i class="fa fa-pencil"></i> Editar</button>
+          <button class="btn btn-danger btn-sm" style="margin: 4px;" (click)="deleteCategoria(element.id)"> <i class="fa  fa-close"></i> Eliminar</button>
+         </td>
+      </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No se encontro  "{{input.value}}"</td>
+            </tr>
+          </table>
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+           </div>
+                    </div>
+       <!-- /.box-body -->
+       <div class="box-footer">
+       
+       </div>
+       <!-- /.box-footer-->
+     </div>
+     <!-- /.box -->
+
+ </section>
+ <div class="modal modal-primary" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">{{!categoriaService.selectedCategoria.id ?'Agregar' : 'Editar'}} Categoria</h4>
+      </div>
+      <form #categoriaForm="ngForm" (ngSubmit)="addCategoria(categoriaForm)">
+
+      <div class="modal-body">
+        <input type="hidden" name="id" #id  [(ngModel)]="categoriaService.selectedCategoria.id" class="form-control">
+
+        <div class="form-group">
+          <label>CATEGORIA (*)</label>
+          <div class="input-group">
+              <div class="input-group-addon">
+                  <i class="fa fa-desktop"></i>
+              </div>
+              <input type="text" name="nombre" #name ="ngModel"[(ngModel)]="categoriaService.selectedCategoria.nombre" class="form-control" required>
+          </div>
+         
+
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cerrar</button>
+        <button  class="btn btn-outline">Guardar</button>
+
+      </div>
+      </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+
