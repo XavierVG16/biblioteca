@@ -4942,6 +4942,7 @@ class AuthGuard {
     }
     canActivate() {
         if (this.authService.loggedIn()) {
+            this.router.navigate(['/inicio']);
             return true;
         }
         this.router.navigate(['/']);

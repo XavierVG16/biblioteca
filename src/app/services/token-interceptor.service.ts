@@ -6,7 +6,7 @@ import {AuthService} from './auth.service'
 })
 export class TokenInterceptorService {
 
-  constructor(private authService: AuthService) { }
+  constructor(public authService: AuthService) { }
   intercept(req, next) {
     let tokenizeReq = req.clone({
       setHeaders: {
