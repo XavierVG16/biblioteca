@@ -1,0 +1,8 @@
+{
+    "/autenticar/*": 
+     {
+        "target": "https://sistemabiblioteca-api.herokuapp.com",
+        "secure": false,
+        "changeOrigin": true
+     }
+}

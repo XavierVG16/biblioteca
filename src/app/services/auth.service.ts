@@ -8,7 +8,7 @@ import {environment} from '../../environments/environment'
   providedIn: 'root'
 })
 export class AuthService {
-  readonly URL_API = `${environment.URL}`;
+  readonly URL_API = `/autenticar`;
   user = {}
   selectedUsuario: Usuario;
   usuario: Usuario[];
@@ -17,6 +17,8 @@ export class AuthService {
    }
    postUsuario(usuario) {
     return this.http.post<any>(this.URL_API, usuario)
+    console.log(this.URL_API)
+
 }
 loggedIn() {
   return !!localStorage.getItem('token');
