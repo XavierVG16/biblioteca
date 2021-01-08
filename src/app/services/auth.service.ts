@@ -11,13 +11,12 @@ export class AuthService {
   readonly URL_API = `${environment.URL}/autenticar/`;
   user = {}
   selectedUsuario: Usuario;
-  usuario: Usuario[];
+  usuarios: Usuario[];
   constructor( private http: HttpClient, private router: Router ) {
     this.selectedUsuario = new Usuario();
    }
    postUsuario(usuario) {
     return this.http.post<any>(this.URL_API, usuario)
-    console.log(this.URL_API)
 
 }
 loggedIn() {
