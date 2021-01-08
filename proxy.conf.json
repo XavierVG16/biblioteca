@@ -1,7 +1,7 @@
 {
-    "autenticarss/*": 
+    "/autenticarss/*": 
      {
-        "target": "https://sistemabiblioteca-api.herokuapp.com/",
+        "target": "https://sistemabiblioteca-api.herokuapp.com",
         "secure": false,
         "logLevel":"debug",
         "changeOrigin": true
