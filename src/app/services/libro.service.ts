@@ -10,7 +10,7 @@ export class LibroService {
 
   selectedLibro: Libro;
   libros : Libro[];
-  readonly URL_API = `${environment.URL}/libro`;
+  readonly URL_API = `/app/libro`;
   constructor( private http: HttpClient) { 
     this.selectedLibro = new Libro();
   }

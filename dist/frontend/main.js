@@ -908,7 +908,7 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    URL: `/app`
+    URL: `/api`
 };
 /*
  * For easier debugging in development mode, you can import the following file
@@ -4881,9 +4881,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LibroService", function() { return LibroService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _models_libro__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../models/libro */ "wLsD");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../environments/environment */ "AytR");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
-
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
 
 
 
@@ -4891,7 +4889,7 @@ __webpack_require__.r(__webpack_exports__);
 class LibroService {
     constructor(http) {
         this.http = http;
-        this.URL_API = `${_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].URL}/libro`;
+        this.URL_API = `/app/libro`;
         this.selectedLibro = new _models_libro__WEBPACK_IMPORTED_MODULE_1__["Libro"]();
     }
     getLibros() {
@@ -4907,14 +4905,14 @@ class LibroService {
         return this.http.delete(this.URL_API + `/${id}`);
     }
 }
-LibroService.ɵfac = function LibroService_Factory(t) { return new (t || LibroService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"])); };
+LibroService.ɵfac = function LibroService_Factory(t) { return new (t || LibroService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"])); };
 LibroService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: LibroService, factory: LibroService.ɵfac, providedIn: 'root' });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](LibroService, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
         args: [{
                 providedIn: 'root'
             }]
-    }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] }]; }, null); })();
+    }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }]; }, null); })();
 
 
 /***/ }),

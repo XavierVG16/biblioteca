@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  URL : `/app`
+  URL : `/api`
 };
 
 /*
