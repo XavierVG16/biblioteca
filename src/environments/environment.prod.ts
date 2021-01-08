@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  URL : `/api`
+  URL : `https://sistemabiblioteca-api.herokuapp.com`
 };
