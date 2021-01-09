@@ -8,7 +8,7 @@ import {environment} from '../../environments/environment'
   providedIn: 'root'
 })
 export class AuthService {
-  readonly URL_API = `${environment.URL}/autenticar/`;
+  readonly URL_API = `/api/autenticar/`;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -42,6 +42,6 @@ setToken(token): void {
   localStorage.setItem("accessToken", token);
 }
 getUser(id: string){
-  return this.http.get<Usuario>(this.URL_API+`user/${id}`)
+  return this.http.get<Usuario>(this.URL_API+`user/${id}`,this.httpOptions)
 }
 }
