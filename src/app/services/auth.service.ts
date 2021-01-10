@@ -8,7 +8,7 @@ import {environment} from '../../environments/environment'
   providedIn: 'root'
 })
 export class AuthService {
-  readonly URL_API = `/api/autenticar/`;
+  readonly URL_API = `${environment.URL}/autenticar/`;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
