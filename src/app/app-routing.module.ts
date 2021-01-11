@@ -2,7 +2,6 @@ import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {InicioComponent } from './components/inicio/inicio.component'
 import { ErroComponent } from './components/erro/erro.component';
-import { AuthGuard } from './auth.guard';
 import {CategoriaComponent} from './components/categoria/categoria.component';
 import {LibroComponent} from './components/libro/libro.component';
 import {LectorComponent} from './components/lector/lector.component';
@@ -10,48 +9,52 @@ import {UsuarioComponent} from './components/usuario/usuario.component';
 import {RegistrarComponent} from './components/prestamos/registrar/registrar.component';
 import {PendientesComponent} from './components/prestamos/pendientes/pendientes.component';
 import {TodoComponent} from './components/prestamos/todo/todo.component';
+import {CheckLoginGuard} from './check-login.guard';
+
 import { from } from 'rxjs';
 const routes: Routes = [
 
   {
     path: 'inicio',
     component: InicioComponent,
-    canActivate: [AuthGuard]
+    canActivate:[CheckLoginGuard]
+   
   },
   {
     path: 'categorias',
     component: CategoriaComponent,
-    canActivate: [AuthGuard]
+    canActivate:[CheckLoginGuard]
+  
   },
   {
     path: 'libros',
     component: LibroComponent,
-    canActivate: [AuthGuard]
+    canActivate:[CheckLoginGuard]
   },
   {
     path: 'lectores',
     component: LectorComponent,
-    canActivate: [AuthGuard]
+    canActivate:[CheckLoginGuard]
   },
   {
     path: 'usuarios',
     component: UsuarioComponent,
-    canActivate: [AuthGuard]
+    canActivate:[CheckLoginGuard]
   },
   {
     path: 'prestamos',
     component: RegistrarComponent,
-    canActivate: [AuthGuard]
+    canActivate:[CheckLoginGuard]
   },
   {
     path: 'prestamos/pendientes',
     component: PendientesComponent,
-    canActivate: [AuthGuard]
+    canActivate:[CheckLoginGuard]
   },
   {
     path: 'prestamos/todo',
     component: TodoComponent,
-    canActivate: [AuthGuard]
+    canActivate:[CheckLoginGuard]
   },
   {
     path: '**',

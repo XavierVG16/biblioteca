@@ -48,10 +48,7 @@ subscribe(res=>{
     this.authService.postUsuario(form.value)
       .subscribe(
         res => {
-          localStorage.setItem('token', res.token);
          this.router.navigate(['/inicio']);
-       
-
          this.toastr.success(`Administrador`, 'Bienvenido');
          this.authService.selectedUsuario = new Usuario()        
 

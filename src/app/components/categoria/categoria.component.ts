@@ -60,9 +60,10 @@ console.log(error);
                 this.ListaCategoria();
                 this.toastr.success(`${res}`, 'Categoria');
 
+            }, err=>{
+              console.log(err)
             });
         } else {
-          this.resetForm(form);
 
             this.categoriaService.postCategoria(form.value).subscribe(res => {
                 this.ListaCategoria();
