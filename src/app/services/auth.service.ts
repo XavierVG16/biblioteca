@@ -58,7 +58,6 @@ export class AuthService {
         return res;
 
       }),
-      catchError((err)=> this.handlerError(err))
     )
 }
 loggedIn() {
@@ -102,12 +101,5 @@ private checkToken(): void{
 
 }
 
-private handlerError(err): Observable<never>{
-  let errorMessge= 'errro';
-  if (err){
-    errorMessge = `error codigo ${err.message}`
-  }
-  window.alert(errorMessge);
-  return throwError(MessageChannel)
-}
+
 }
