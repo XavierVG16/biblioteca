@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../models/usuario';
-import { HttpClient , HttpHeaders} from '@angular/common/http';
+import { HttpClient ,HttpParams, HttpHeaders} from '@angular/common/http';
 //import { Observable } from "rxjs/Observable";
 import { Router } from '@angular/router';
 import {environment} from '../../environments/environment'
@@ -38,7 +38,17 @@ export class AuthService {
 
 
    postUsuario(usuario): Observable<any> {
-    return this.http.post<Usuario>(this.URL_API, usuario)
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    });
+    let options = {
+      headers: headers,
+    };
+
+
+
+    return this.http.post<Usuario>(this.URL_API, usuario, options)
   
     .pipe(
       map((res: Usuario) =>{
