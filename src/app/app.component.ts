@@ -54,7 +54,7 @@ subscribe(res=>{
 
         },
         err => {
-         
+         console.log(err)
           this.toastr.error(`${err.error.message}`, 'Error!');
           this.authService.selectedUsuario = new Usuario()        
 
