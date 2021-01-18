@@ -48,7 +48,7 @@ export class AuthService {
 
 
 
-    return this.http.post<Usuario>(this.URL_API, usuario, options)
+    return this.http.post<Usuario>(this.URL_API, usuario)
   
     .pipe(
       map((res: Usuario) =>{
