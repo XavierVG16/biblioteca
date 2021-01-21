@@ -15,7 +15,7 @@ const helper = new JwtHelperService
 })
 export class AuthService {
 
-  readonly URL_API = `${environment.URL}/autenticar/`;
+  readonly URL_API = `${environment.URL}/autenticar`;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -81,7 +81,7 @@ setToken(token): void {
   localStorage.setItem("accessToken", token);
 }
 getUser(id: string){
-  return this.http.get<Usuario>(this.URL_API+`user/${id}`,this.httpOptions)
+  return this.http.get<Usuario>(this.URL_API+`/user/${id}`,this.httpOptions)
 }
 
 private saveToken(token:string): void {
