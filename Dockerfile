@@ -6,7 +6,7 @@
    
    RUN npm install 
    RUN  npm run build -- --prod 
-    FROM nginx:alpine
+    FROM nginx:1.25.3-alpine3.18
     
 
     #COPY --from=node /app/dist/frontend /usr/share/nginx/html
